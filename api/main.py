@@ -4,7 +4,7 @@ import os
 import uvicorn 
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from ..src import main
+from src.main import main
 app = FastAPI()
 
 
@@ -13,7 +13,7 @@ UPLOAD_DIR = "data\papers"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 templates = Jinja2Templates(directory="templates")
-@app.get("/", response_class=HTMLResponse)
+@app.get("", response_class=HTMLResponse)
 async def upload(request: Request):
    return templates.TemplateResponse("../template/index.html", {"request": request})
 
@@ -29,9 +29,9 @@ async def upload_research_paper(file: UploadFile = File(...)):
     
     return {"filename": file.filename, "content_type": file.content_type, "saved_to": save_path}
 
-@app.post("/submit")
+@app.post("/query")
 async def submit(query: str = Form(...)):
    response = main(query)
    return {"response":response}
-if __name__ == "__main__":
-    uvicorn.run("main:app",host = "127.0.0.1", port = 8000, reload = True)
+# if __name__ == "__main__":
+#     uvicorn.run("api.main:app",host = "127.0.0.1", port = 8000, reload = True)

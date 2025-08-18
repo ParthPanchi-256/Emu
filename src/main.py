@@ -68,6 +68,6 @@ def main(user_query):
     logger.info("----------------------------------")
     return final_response
 
-if __name__ == "__main__":
-    user_query = input("Enter a query: ")
-    main(user_query)
+# if __name__ == "__main__":
+#     user_query = input("Enter a query: ")
+#     main(user_query)
