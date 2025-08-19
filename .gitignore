@@ -1,6 +1,5 @@
 # Python-generated files
 __pycache__/
-*.py[oc]
 build/
 dist/
 wheels/
@@ -10,4 +9,4 @@ wheels/
 .venv
 
 uv.lock
-src/config
+/src/config.py
